@@ -63,7 +63,10 @@ async function _localCall(event, payload) {
 // ---- online mode ----
 function _ensureOnline() {
   if (_ioSocket) return _ioSocket;
-  // `io` is the global exposed by /socket.io/socket.io.js (served by Express automatically).
+  if (typeof window.io !== 'function') {
+    throw new Error('Socket.IO não disponível. O modo online requer o servidor.');
+  }
+  // `io` is the global exposed by socket.io/socket.io.js (served by Express automatically).
   _ioSocket = window.io({ autoConnect: true });
 
   _ioSocket.on('connect', () => setState({ connected: true, myId: _ioSocket.id, mode: 'online' }));

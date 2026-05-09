@@ -58,7 +58,7 @@ export function mountWelcome() {
       const name = nameInput().trim();
       if (!name) return showToast('Escolha um nome primeiro', 'error');
       rememberName(name);
-      net.useOnline();
+      try { net.useOnline(); } catch { return showToast('Modo online indisponível aqui. Use o servidor dedicado.', 'error'); }
       const res = await net.createRoom({ name, roundLimit: 5 });
       if (!res?.ok) return showToast(res?.error || 'Não foi possível criar sala', 'error');
       setState({ roomCode: res.code, myId: res.playerId });
@@ -84,7 +84,7 @@ export function mountWelcome() {
       if (!name) return showToast('Escolha um nome primeiro', 'error');
       if (code.length !== 4) return showToast('Digite um código de 4 letras', 'error');
       rememberName(name);
-      net.useOnline();
+      try { net.useOnline(); } catch { return showToast('Modo online indisponível aqui. Use o servidor dedicado.', 'error'); }
       const res = await net.joinRoom({ code, name });
       if (!res?.ok) return showToast(res?.error || 'Não foi possível entrar', 'error');
       setState({ roomCode: res.code, myId: res.playerId });
