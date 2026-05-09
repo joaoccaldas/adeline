@@ -1,0 +1,106 @@
+/* Modals & toasts */
+
+.modal-host {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  display: grid;
+  place-items: end center;
+  z-index: 10;
+}
+.modal-host:has(.modal-card) {
+  pointer-events: auto;
+  background: rgba(7, 9, 14, 0.66);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-card {
+  width: min(560px, 100%);
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.1rem;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 0.8rem;
+  animation: modalIn 0.25s ease;
+}
+.modal-card h2 { margin: 0; }
+.modal-card .actions {
+  display: grid;
+  gap: 0.4rem;
+  grid-template-columns: 1fr 1fr;
+}
+.modal-card .actions .full { grid-column: 1 / -1; }
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+.results-table th, .results-table td {
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.results-table th {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.results-table tr.lowest td { color: var(--success); font-weight: 800; }
+.results-table tr.penalty td { color: var(--danger); font-weight: 700; }
+
+.toast-host {
+  position: fixed;
+  top: max(0.75rem, var(--safe-top));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: grid;
+  gap: 0.4rem;
+  width: min(420px, calc(100% - 1rem));
+  pointer-events: none;
+}
+.toast {
+  background: rgba(23,29,43,0.95);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  animation: toastIn 0.25s ease;
+}
+.toast.peek { border-color: rgba(231,195,106,0.45); }
+.toast.reveal { border-color: rgba(139,211,255,0.45); color: var(--accent-2); }
+.toast.error { border-color: rgba(255,123,123,0.45); color: var(--danger); }
+.toast.info { border-color: rgba(255,255,255,0.18); }
+.toast.fade-out { animation: toastOut 0.3s ease forwards; }
+
+.power-targets {
+  display: grid;
+  gap: 0.5rem;
+}
+.power-targets .target-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.power-targets button.target {
+  background: rgba(255,255,255,0.08);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.1);
+  text-align: left;
+  padding: 0.7rem;
+  border-radius: var(--radius-md);
+}
+
+.peek-card-display {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+.peek-card-display .card { width: 130px; }

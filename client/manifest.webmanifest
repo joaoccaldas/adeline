@@ -1,0 +1,18 @@
+{
+  "name": "Adeline",
+  "short_name": "Adeline",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#10141f",
+  "theme_color": "#10141f",
+  "description": "Multiplayer online Adeline card game.",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='40' fill='%23e7c36a'/%3E%3Ctext x='96' y='130' text-anchor='middle' font-family='sans-serif' font-size='120' font-weight='900' fill='%2310141f'%3EA%3C/text%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

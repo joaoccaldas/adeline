@@ -1,0 +1,119 @@
+/* Card component */
+
+.card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 5 / 7;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  user-select: none;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  box-shadow: var(--shadow-soft);
+  border: 2px solid rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card.face {
+  background: linear-gradient(150deg, #ffffff, #e7eef9);
+  color: var(--card-text);
+}
+.card.face.red { color: var(--red); }
+
+.card.back {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.08);
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.10), transparent 30%),
+    repeating-linear-gradient(45deg, #2b3650 0 8px, #20283a 8px 16px);
+}
+.card.back .pattern {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  font-weight: 800;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+}
+
+.card .rank { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+.card .suit { font-size: clamp(1rem, 4vw, 1.4rem); margin-left: 0.15rem; }
+
+.card.joker .rank {
+  font-size: clamp(0.9rem, 3.4vw, 1.1rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.card.tiny {
+  width: 52px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+.card.tiny .rank { font-size: 1rem; }
+.card.tiny .suit { font-size: 0.75rem; }
+
+.card.peeked::after {
+  content: 'seen';
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  background: rgba(16,20,31,0.78);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.1rem 0.32rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card.public-known::before {
+  content: 'public';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  background: rgba(139,211,255,0.85);
+  color: #06222e;
+  border-radius: 999px;
+  padding: 0.1rem 0.32rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.card.selectable {
+  cursor: pointer;
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  animation: cardPulse 1.2s ease-in-out infinite;
+}
+.card.selected {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 3px;
+}
+
+.card.flip {
+  transform-style: preserve-3d;
+}
+.card.flip-in {
+  animation: cardFlipIn 0.5s ease;
+}
+
+.pile-card {
+  width: 64px;
+  aspect-ratio: 5 / 7;
+}
+.pile-card.disabled { opacity: 0.45; }
+
+.empty-pile {
+  width: 64px;
+  aspect-ratio: 5 / 7;
+  border: 2px dashed rgba(255,255,255,0.18);
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
