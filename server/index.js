@@ -22,6 +22,6 @@ app.get('/health', (_req, res) => res.json({ ok: true, t: Date.now() }));
 attachSocketHandlers(io);
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, '127.0.0.1', () => {
-  console.log(`Adelinete server listening on http://localhost:${PORT}`);
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Adelinete server listening on http://0.0.0.0:${PORT}`);
 });
