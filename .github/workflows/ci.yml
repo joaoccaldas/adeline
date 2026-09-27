@@ -28,3 +28,6 @@ jobs:
           find server client/js -type f -name '*.js' -print0 | xargs -0 -n1 node --check
       - name: Verify server entry point exists
         run: test -f server/index.js
+
+      - name: Client/server parity tests
+        run: npm test
