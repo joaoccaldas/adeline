@@ -43,3 +43,9 @@ AI tools are used extensively during research, design, coding, debugging, testin
 ## Status
 
 Playable learning project / active portfolio candidate.
+
+## Network boundary
+
+The current learning server listens on all interfaces and Socket.IO is configured with permissive CORS to make local/group testing easy. Treat that as a development/lab default, not a hardened public-internet deployment profile.
+
+Before public hosting, configure explicit trusted origins, review abuse/rate limits and room lifecycle, and add deployment-specific security tests without weakening offline/local play.
