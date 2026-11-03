@@ -22,6 +22,8 @@ app.get('/health', (_req, res) => res.json({ ok: true, t: Date.now() }));
 attachSocketHandlers(io);
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`Adelinete server listening on http://0.0.0.0:${PORT}`);
+// Set ADELINE_BIND_HOST explicitly on container or managed hosts that require ingress.
+const HOST = process.env.ADELINE_BIND_HOST || '127.0.0.1';
+server.listen(PORT, HOST, () => {
+  console.log(`Adeline server listening on ${HOST}:${PORT}`);
 });
